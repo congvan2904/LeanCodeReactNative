@@ -6,6 +6,7 @@ import {
     StyleSheet,
 } from 'react-native';
 import { connect } from 'react-redux';
+import { toggleIsAdding } from '../redux/actionCreaters'
 class Header extends Component {
     render() {
         return (
@@ -14,7 +15,7 @@ class Header extends Component {
                 <Text>
                     My Word
                     </Text>
-                <TouchableOpacity onPress={() => this.props.dispatch({ type: 'ISADDING' })}>
+                <TouchableOpacity onPress={() => this.props.toggleIsAdding()}>
                     <Text>
                         +
                     </Text>
@@ -59,4 +60,4 @@ const styles = StyleSheet.create(
 
     }
 )
-export default connect()(Header);
+export default connect(null, { toggleIsAdding })(Header);

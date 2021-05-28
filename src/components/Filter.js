@@ -9,6 +9,7 @@ import { createStore } from 'redux';
 import { Provider } from 'react-redux';
 import Main from './Main';
 import { connect } from 'react-redux';
+import * as actionCreater from '../redux/actionCreaters';
 class Filter extends Component {
     getTextStyle(statusname) {
         const { filterStatus } = this.props;
@@ -27,7 +28,7 @@ class Filter extends Component {
             <View style={styles.containerButton}>
                 <TouchableOpacity onPress={
                     () => {
-                        this.props.dispatch({ type: 'FILTER_SHOWALL' })
+                        this.props.filterShowAll()
                     }
                 }>
                     <Text style={this.getTextStyle('SHOW_ALL')}>
@@ -36,7 +37,7 @@ class Filter extends Component {
                 </TouchableOpacity >
                 <TouchableOpacity onPress={
                     () => {
-                        this.props.dispatch({ type: 'FILTER_MEMORIEZ' })
+                        this.props.filterMemorized()
                     }
                 }>
                     <Text style={styles.textButon, this.getTextStyle('MEMORIEZ')}>
@@ -45,7 +46,7 @@ class Filter extends Component {
                 </TouchableOpacity>
                 <TouchableOpacity onPress={
                     () => {
-                        this.props.dispatch({ type: 'FILTER_NEED_PRACTICE' })
+                        this.props.filterNeedPractice()
                     }
                 }>
                     <Text style={styles.textButon, this.getTextStyle('NEED_PRACTICE')}>
@@ -61,7 +62,7 @@ function mapStateToProp(state) {
         filterStatus: state.filterStatus
     }
 }
-export default connect(mapStateToProp)(Filter);
+export default connect(mapStateToProp, actionCreater)(Filter);
 const styles = StyleSheet.create(
     {
         view: {
