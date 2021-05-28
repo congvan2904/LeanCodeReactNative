@@ -33,5 +33,5 @@ const reducer = (state = defaultState, action) => {
             return state;
     }
 }
-const store = createStore(reducer, applyMiddleware);
+const store = createStore(reducer, applyMiddleware(thunk));
 export default store;

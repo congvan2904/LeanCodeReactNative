@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 import getTemp from '../api/getTemp';
-import { startFetchData, fetchSuccess, fetchError, fetchDataThunk } from './redux/actionCreator';
+import * as reduxthun from './redux/actionCreator';
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -94,4 +94,4 @@ function mapStateToProps(state) {
         error: state.error,
     }
 }
-export default connect(mapStateToProps, { startFetchData, fetchSuccess, fetchError, fetchDataThunk })(Main);
+export default connect(mapStateToProps, reduxthun)(Main);
